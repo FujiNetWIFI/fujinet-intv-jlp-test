@@ -24,7 +24,8 @@ GitHub, so the FujiNet needs internet access. The AppKey test needs an SD
 card in the FujiNet.
 
 In jzIntv, use a FujiNetWIFI build that models the cart's JLP and mailbox
-sharing (in review; the FujiNet Go Intellivision apps follow):
+sharing ([jzintv#3](https://github.com/FujiNetWIFI/jzintv/pull/3), in
+review; the FujiNet Go Intellivision apps follow):
 
 ```sh
 jzintv --fujinet=localhost:1985 --jlp-savegame=jlpfn.jlp build/jlpfn.bin
