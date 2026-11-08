@@ -135,9 +135,9 @@ A flash command keeps core 0 busy on both chips; the mailbox waits for it.
 
 ## Emulators
 
-FujiNetWIFI's jzIntv models the cart once its JLP change
-([FujiNetWIFI/jzintv#3](https://github.com/FujiNetWIFI/jzintv/pull/3), in
-review) lands; the FujiNet Go Intellivision apps follow:
+FujiNetWIFI's jzIntv models the cart since
+[FujiNetWIFI/jzintv#3](https://github.com/FujiNetWIFI/jzintv/pull/3) (the
+FujiNet Go Intellivision apps follow):
 
 - the FujiNet peripheral answers `$9C00-$9F3F` only;
 - a JLP game keeps the mailbox only with `[vars] fujinet = 1` in its `.cfg`,
@@ -207,7 +207,7 @@ Found while writing the test ROM. Each has a test that shows it.
 | Flash erase picks the sector as `row % 8` instead of `row / 8`: erasing rows 8-15 erases sector 0 | cart firmware | B7 | fix in progress |
 | Flash row and RAM address are not range-checked; a span can overwrite the accelerators or the mailbox | cart firmware | B8 | fix in progress |
 | RP2040 carts serve JLP accelerators and flash only between core-0 loop passes, so results go stale and flash stalls during a FujiNet transaction | cart firmware | D1, B9 | fix in progress |
-| jzIntv put the mailbox on top of JLP | jzIntv | A2, A5, B2-B5 | [jzintv#3](https://github.com/FujiNetWIFI/jzintv/pull/3), in review |
+| jzIntv put the mailbox on top of JLP | jzIntv | A2, A5, B2-B5 | fixed in [jzintv#3](https://github.com/FujiNetWIFI/jzintv/pull/3) |
 | `jlp = 2` means "accelerators off at reset" to jzIntv and JLP, "on" to the cart | cart firmware | — | open |
 | An Intellicart `.rom` booted over the network gets no JLP | cart firmware | — | open |
 | The cart lets a flash row be written twice without an erase; JLP and jzIntv refuse | cart firmware | B6 (details) | open |

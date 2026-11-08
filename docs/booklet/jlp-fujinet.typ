@@ -268,8 +268,8 @@ version, time, and flash and transaction timings.
   What jzIntv does now, and what the test cartridge found.
 ])
 
-With its JLP change (in review), FujiNetWIFI's jzIntv models the
-cartridge, and the FujiNet Go Intellivision apps follow: the FujiNet peripheral answers
+Since jzintv pull request 3, FujiNetWIFI's jzIntv models the cartridge,
+and the FujiNet Go Intellivision apps follow: the FujiNet peripheral answers
 #hx("$9C00")–#hx("$9F3F") only, a JLP game keeps the mailbox only with
 #cd("fujinet = 1") in its .cfg (loaded from the command line or pushed by
 FujiNet), JLP stands aside on the mailbox, and #cd("LINK") is refreshed
@@ -284,7 +284,7 @@ test cartridge finds no mailbox and fails A5, B2–B5 and B8.
   (t8([Flash erase picks the sector as row #cd("%") 8, not row / 8]), "B7", "fix in progress"),
   ("Flash row and RAM address are not range-checked", "B8", "fix in progress"),
   ("RP2040: JLP stalls during a FujiNet transaction", "D1, B9", "fix in progress"),
-  ("jzIntv put the mailbox on top of JLP", "A2, A5, B2–B5", "in review"),
+  ("jzIntv put the mailbox on top of JLP", "A2, A5, B2–B5", "fixed"),
   (t8([#cd("jlp = 2") means accelerators on to the cart, off to JLP]), "—", "open"),
   (t8([An Intellicart #cd(".rom") booted over the network gets no JLP]), "—", "open"),
   ("The cart lets a flash row be written twice without erasing", "B6", "open"),
