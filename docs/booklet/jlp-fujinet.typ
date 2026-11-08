@@ -281,8 +281,8 @@ multiply, divide, CRC and random registers read zero. On such a build the
 test cartridge finds no mailbox and fails A5, B2–B5 and B8.
 
 #wire(("Issue", "Found by", "Status"), widths: (1fr, 46pt, 62pt),
-  (t8([Flash erase picks the sector as row #cd("%") 8, not row / 8]), "B7", "fix in progress"),
-  ("Flash row and RAM address are not range-checked", "B8", "fix in progress"),
+  (t8([Flash erase picks the sector as row #cd("%") 8, not row / 8]), "B7", "in review (#2335)"),
+  ("Flash row and RAM address are not range-checked", "B8", "in review (#2335)"),
   ("RP2040: JLP stalls during a FujiNet transaction", "D1, B9", "fix in progress"),
   ("jzIntv put the mailbox on top of JLP", "A2, A5, B2–B5", "fixed"),
   (t8([#cd("jlp = 2") means accelerators on to the cart, off to JLP]), "—", "open"),

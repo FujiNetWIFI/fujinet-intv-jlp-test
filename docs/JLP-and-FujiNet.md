@@ -204,8 +204,8 @@ Found while writing the test ROM. Each has a test that shows it.
 
 | Issue | Where | Test | Status |
 |---|---|---|---|
-| Flash erase picks the sector as `row % 8` instead of `row / 8`: erasing rows 8-15 erases sector 0 | cart firmware | B7 | fix in progress |
-| Flash row and RAM address are not range-checked; a span can overwrite the accelerators or the mailbox | cart firmware | B8 | fix in progress |
+| Flash erase picks the sector as `row % 8` instead of `row / 8`: erasing rows 8-15 erases sector 0 | cart firmware | B7 | [#2335](https://github.com/FujiNetWIFI/fujinet-firmware/pull/2335), in review |
+| Flash row and RAM address are not range-checked; a span can overwrite the accelerators or the mailbox | cart firmware | B8 | [#2335](https://github.com/FujiNetWIFI/fujinet-firmware/pull/2335), in review |
 | RP2040 carts serve JLP accelerators and flash only between core-0 loop passes, so results go stale and flash stalls during a FujiNet transaction | cart firmware | D1, B9 | fix in progress |
 | jzIntv put the mailbox on top of JLP | jzIntv | A2, A5, B2-B5 | fixed in [jzintv#3](https://github.com/FujiNetWIFI/jzintv/pull/3) |
 | `jlp = 2` means "accelerators off at reset" to jzIntv and JLP, "on" to the cart | cart firmware | — | open |
