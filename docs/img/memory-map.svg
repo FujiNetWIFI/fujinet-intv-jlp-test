@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="560" viewBox="0 0 820 560" font-family="Helvetica, Arial, sans-serif">
+  <title>$8000-$9FFF on a FujiNet INTV cartridge running a JLP game</title>
+  <rect x="0" y="0" width="820" height="560" rx="10" fill="#ffffff"/>
+  <text x="24" y="38" font-size="20" font-weight="bold" fill="#1c1a1a">One window, two tenants: $8000-$9FFF</text>
+  <text x="24" y="60" font-size="13" fill="#555">Not to scale. Blue is JLP's, magenta is FujiNet's. Both are the same RAM inside the cartridge.</text>
+
+  <!-- address column -->
+  <g font-size="13" font-family="DejaVu Sans Mono, Menlo, monospace" fill="#333" text-anchor="end">
+    <text x="118" y="96">$8000</text>
+    <text x="118" y="146">$8040</text>
+    <text x="118" y="306">$9C00</text>
+    <text x="118" y="336">$9C40</text>
+    <text x="118" y="378">$9D40</text>
+    <text x="118" y="456">$9F40</text>
+    <text x="118" y="484">$9F80</text>
+    <text x="118" y="534">$9FFF</text>
+  </g>
+
+  <!-- bar -->
+  <g stroke="#1c1a1a" stroke-width="1.2">
+    <rect x="130" y="84" width="230" height="50" fill="#bcd4f0"/>
+    <rect x="130" y="134" width="230" height="160" fill="#dbe8f7"/>
+    <rect x="130" y="294" width="230" height="30" fill="#f2b6c6"/>
+    <rect x="130" y="324" width="230" height="42" fill="#f6cdd8"/>
+    <rect x="130" y="366" width="230" height="78" fill="#f9dfe6"/>
+    <rect x="130" y="444" width="230" height="28" fill="#dbe8f7"/>
+    <rect x="130" y="472" width="230" height="56" fill="#bcd4f0"/>
+  </g>
+  <rect x="128" y="292" width="234" height="154" fill="none" stroke="#d22654" stroke-width="3"/>
+
+  <g font-size="14" fill="#1c1a1a" text-anchor="middle">
+    <text x="245" y="106" font-weight="bold">JLP registers</text>
+    <text x="245" y="124" font-size="12">flash $8023-$802F, on/off $8033/$8034</text>
+    <text x="245" y="206" font-weight="bold">JLP RAM, free for the game</text>
+    <text x="245" y="226" font-size="12">7,104 words, 16 bits wide</text>
+    <text x="245" y="244" font-size="12">--jlp variables start at $8040</text>
+    <text x="245" y="314" font-weight="bold" fill="#8f1235">mailbox header</text>
+    <text x="245" y="350" font-weight="bold" fill="#8f1235">TX, 256 bytes</text>
+    <text x="245" y="410" font-weight="bold" fill="#8f1235">RX, 512 bytes</text>
+    <text x="245" y="463" font-size="12">JLP RAM, 64 words</text>
+    <text x="245" y="496" font-weight="bold">JLP accelerators</text>
+    <text x="245" y="514" font-size="12">multiply/divide, CRC-16, random</text>
+  </g>
+
+  <!-- right-hand notes -->
+  <g font-size="13" fill="#1c1a1a">
+    <line x1="366" y1="214" x2="420" y2="214" stroke="#2b6cb0" stroke-width="1.5"/>
+    <text x="428" y="200" font-weight="bold" fill="#2b6cb0">Keep every variable below $9C00</text>
+    <text x="428" y="219">IntyBASIC only checks against $9F80, so a big</text>
+    <text x="428" y="236">DIM can run into the mailbox without a warning.</text>
+    <text x="428" y="253">Check _SYSTEM2 in the .sym file.</text>
+
+    <line x1="366" y1="368" x2="420" y2="368" stroke="#d22654" stroke-width="1.5"/>
+    <text x="428" y="318" font-weight="bold" fill="#d22654">FujiNet mailbox, $9C00-$9F3F</text>
+    <text x="428" y="337">Exists for a JLP game only when its .cfg</text>
+    <text x="428" y="354">says [vars] fujinet = 1. Byte-wide cells:</text>
+    <text x="428" y="371">MAGIC F,N  SEQ $9C03  ACKSEQ $9C04  LINK $9C0F</text>
+    <text x="428" y="388">Touch it only through the mailbox protocol.</text>
+    <text x="428" y="405">Without the opt-in this is ordinary JLP RAM.</text>
+
+    <line x1="366" y1="500" x2="420" y2="500" stroke="#2b6cb0" stroke-width="1.5"/>
+    <text x="428" y="474" font-weight="bold" fill="#2b6cb0">Never shared</text>
+    <text x="428" y="493">$9F40-$9FFF belongs to JLP even when the</text>
+    <text x="428" y="510">mailbox is on. Flash commands may not copy</text>
+    <text x="428" y="527">a row into or out of the mailbox.</text>
+  </g>
+</svg>
